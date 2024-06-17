@@ -1,0 +1,74 @@
+.formulario {
+    margin: 0 auto; /* Centraliza o formulário horizontalmente */
+    margin-top: -1em;
+    padding-bottom: 55px;
+    padding-left: 30px; 
+    padding-right: 30px; /* Espaçamento interno ao redor do conteúdo */
+    border: 1px solid #ccc; /* Borda ao redor do formulário */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-family: Arial, sans-serif; /* Define a fonte do formulário */
+    background-color: #ADD8E6; /* Cor de fundo do formulário */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra para um efeito de elevação */
+
+}
+
+#titulo {
+    color: #00008B; /* Define a cor do texto do título */
+    text-align: center; /* Centraliza o título */
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+}
+
+fieldset {
+    border: 0;
+    width: 100%;
+}
+
+.campo {
+    margin-bottom: -1em;
+}
+
+fieldset.agrupar .campo {
+    float: left;
+    margin-right: 10px;
+    width: 70%;
+    display: table;
+}
+
+label {
+    display: block; /* Exibe o rótulo como bloco */
+    width: 50%;
+    font-weight: bold; /* Define o texto do rótulo como negrito */
+    margin-bottom: 3px; /* Espaçamento abaixo do rótulo */
+}
+
+input {
+    width: 1100px;
+    margin-right: 10px;
+}
+
+button[type="submit"] {
+    background-color: #4169E1; /* Cor de fundo do botão */
+    position:absolute;
+    transform: translate(350%, 35%);
+    color: #fff; /* Cor do texto do botão */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    cursor: pointer; /* Define o cursor como pointer ao passar sobre o botão */
+    transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+}
+
+button[type="submit"]:hover {
+    background-color: #0000FF; /* Cor de fundo ao passar o mouse sobre o botão */
+}
+
+button.bttn-pesquisar {
+    margin-left: 0; /* Margem esquerda zero para o botão de busca */
+    margin-top: 10px; /* Espaçamento acima do botão de busca */
+}
+
+.error {
+    color: red; /* Cor do texto das mensagens de erro */
+    font-size: 0.875em; /* Tamanho da fonte das mensagens de erro */
+    margin-top: 5px; /* Espaçamento acima das mensagens de erro */
+}

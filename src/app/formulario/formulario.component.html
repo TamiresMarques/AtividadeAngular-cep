@@ -1,0 +1,126 @@
+<html lang = "pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta formControlName="viewport" content="width-device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+</head>
+<body>
+    <h1 id="titulo">Cadastro de Usuário - Angular</h1>
+    <p id="subtitulo">Preencha os campos abaixo:</p>
+    <br>
+
+    <form [formGroup]="formAngular" class="formulario" (submit)="enviarFormulario()">
+        <fieldset class="agrupar">
+            <div>
+                <label>Nome Completo</label>
+                <input type="text" formControlName="nome" id="nome">
+                <div *ngIf="formAngular.get('nomeCompleto')?.invalid && formAngular.get('nomeCompleto')?.touched" class="error">
+                    <small *ngIf="formAngular.get('nomeCompleto')?.errors?.['required']">Nome completo é obrigatório.</small>
+                    <small *ngIf="formAngular.get('nomeCompleto')?.errors?.['minlength']">Nome completo precisa ter pelo menos 5 caracteres.</small>
+                    <small *ngIf="formAngular.get('nomeCompleto')?.errors?.['maxlength']">Nome completo precisa ter no máximo 210 caracteres.</small>
+                </div>
+            </div>
+            <div class="campo">
+                <label>Data de Nascimento</label>
+                <input type="date" formControlName="nascimento" id="nascimento" mask="00/00/0000">
+                <div *ngIf="formAngular.get('nascimento')?.invalid && formAngular.get('nascimento')?.touched" class="error">
+                    <small *ngIf="formAngular.get('nascimento')?.errors?.['required']">Data de Nascimento é obrigatória.</small>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="agrupar">
+            <div>
+                <label>E-mail</label>
+                <input type="email" formControlName="email" id="email">
+                <div *ngIf="formAngular.get('email')?.invalid && formAngular.get('email')?.touched" class="error">
+                    <small *ngIf="formAngular.get('email')?.errors?.['required']">E-mail é obrigatório.</small>
+                    <small *ngIf="formAngular.get('email')?.errors?.['email']">E-mail inválido.</small>
+                </div>
+            </div>
+            <div class="campo">
+                <label>Telefone</label>
+                <input type="number" formControlName="telefone" id="telefone" mask="(00)00000-0000">
+                <div *ngIf="formAngular.get('telefone')?.invalid && formAngular.get('telefone')?.touched" class="error">
+                    <small *ngIf="formAngular.get('telefone')?.errors?.['required']">Telefone é obrigatório.</small>
+                    <small *ngIf="formAngular.get('telefone')?.errors?.['pattern']">Telefone precisa ter 10 ou 11 dígitos.</small>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="agrupar">
+            <div>
+                <label>CPF</label>
+                <input type="text" formControlName="cpf" id="cpf" mask="000.000.000-00">
+                <div *ngIf="formAngular.get('cpf')?.invalid && formAngular.get('cpf')?.touched" class="error">
+                    <small *ngIf="formAngular.get('cpf')?.errors?.['required']">CPF é obrigatório.</small>
+                    <small *ngIf="formAngular.get('cpf')?.errors?.['pattern']">CPF precisa ter 11 dígitos.</small>
+                </div>
+            </div>
+            <div class="campo">
+                <div class="cep-label">
+                    <label>CEP</label>
+                </div>
+                <div class="cep-input">
+                    <input type="text" id="cep" class="form-control" formControlName="cep" mask="00000-000">
+                </div>
+                <button type="button" class="bttn-pesquisar" (click)="gerarEndereco()">Pesquisar</button>
+                <div *ngIf="formAngular.get('cep')?.invalid && formAngular.get('cep')?.touched" class="error">
+                    <small *ngIf="formAngular.get('cep')?.errors?.['required']">CEP é obrigatório.</small>
+                    <small *ngIf="formAngular.get('cep')?.errors?.['pattern']">CEP precisa ter 8 dígitos.</small>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="agrupar">
+            <div>
+                <label>Rua</label>
+                <input type="text" id="rua" formControlName="rua" placeholder="Rua" readonly>
+                <div *ngIf="formAngular.get('rua')?.invalid && formAngular.get('rua')?.touched" class="error">
+                  <small *ngIf="formAngular.get('rua')?.errors?.['required']">Rua é obrigatória.</small>
+                </div>
+            </div>
+            <div class="campo">
+                <label for="numero">Número</label>
+                <input type="text" id="numero" formControlName="numero">
+                <div *ngIf="formAngular.get('numero')?.invalid && formAngular.get('numero')?.touched" class="error">
+                  <small *ngIf="formAngular.get('numero')?.errors?.['required']">Número é obrigatório.</small>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="agrupar">
+            <div>
+                <label>Complemento</label>
+                <input type="text" id="complemento" formControlName="complemento">
+            </div>
+            <div class="campo">
+                <label>Bairro</label>
+                <input type="text" id="bairro" formControlName="bairro"  placeholder="Bairro" readonly>
+                <div *ngIf="formAngular.get('bairro')?.invalid && formAngular.get('bairro')?.touched" class="error">
+                  <small *ngIf="formAngular.get('bairro')?.errors?.['required']">Bairro é obrigatório.</small>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="agrupar">
+            <div>
+                <label>Cidade</label>
+                <input type="text" id="cidade" formControlName="cidade" placeholder="Cidade" readonly>
+                <div *ngIf="formAngular.get('cidade')?.invalid && formAngular.get('cidade')?.touched" class="error">
+                  <small *ngIf="formAngular.get('cidade')?.errors?.['required']">Cidade é obrigatória.</small>
+                </div>
+            </div>
+            <div class="campo">
+                <label for="estado">Estado</label>
+                <input type="text" id="estado" formControlName="estado" placeholder="Estado" readonly>
+                <!-- Exibição de erros de validação para Estado -->
+                <div *ngIf="formAngular.get('estado')?.invalid && formAngular.get('estado')?.touched" class="error">
+                  <small *ngIf="formAngular.get('estado')?.errors?.['required']">Estado é obrigatório.</small>
+                </div>
+            </div>
+        </fieldset>
+
+        <button type="submit" [disabled]="formAngular.invalid">Submeter resposta</button>
+    </form>
+</body>
